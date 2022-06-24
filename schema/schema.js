@@ -9,3 +9,20 @@ const MovieType = new GraphQLObjectType({
         genre: { type: GraphQLString },
     })
 })
+
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: () => ({
+        movie: {
+            type: MovieType,
+            args: {id: {type: GraphQLID}},
+            resolve(parentValue, args) {
+
+            }
+        }
+    })
+})
+
+module.exports = new GraphQLSchema({
+    query: RootQuery
+})
